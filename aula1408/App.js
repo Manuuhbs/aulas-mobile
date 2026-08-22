@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
   secaoUm:{
     paddingTop: 50,
     flexDirection: "row",
+    margin: 10,
   },
   secaoTextos:{
     flexDirection:'column',
