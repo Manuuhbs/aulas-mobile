@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
-
-export default function App() {
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Link, Stack } from "expo-router";
+export default function Inicio() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+       <Stack.Screen options={{ title: "Painel" }} />
             <View style={styles.secaoUm}>
               <View style={styles.circulo}></View>
               <View style={styles.secaoTextos}>
@@ -22,7 +24,7 @@ export default function App() {
                 <Button  title="Enviar" color="#043803"/>
                 </View>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
