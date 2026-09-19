@@ -1,11 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button, Image } from "react-native";
+import { StyleSheet, Text, View, Button, Image, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
 export default function Inicio() {
   return (
+    
     <SafeAreaView style={styles.container}>
-      <Stack.Screen options={{ title: "Escolha a aula" }} />
+      <ScrollView>
+      <Stack.Screen options={{ title: "Aulas" }} />
       <View style={styles.retangulos}>
         <Link href="/aula1" style={styles.link}>
           Aula 1
@@ -41,6 +43,11 @@ export default function Inicio() {
           Aula 6
         </Link>
       </View>
+      <View style={styles.retangulos}>
+        <Link href="/aula1809" style={styles.link}>
+          Aula 7   
+        </Link>
+      </View>
       <View style={styles.imagens}>
         <View style={styles.gatos}>
           <Image
@@ -54,6 +61,7 @@ export default function Inicio() {
         />
       </View>
       <StatusBar style="auto" />
+      </ScrollView>
     </SafeAreaView>
   );
 }
