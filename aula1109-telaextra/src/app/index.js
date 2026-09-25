@@ -1,66 +1,77 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button, Image, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  Image,
+  ScrollView,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
 export default function Inicio() {
   return (
-    
     <SafeAreaView style={styles.container}>
       <ScrollView>
-      <Stack.Screen options={{ title: "Aulas" }} />
-      <View style={styles.retangulos}>
-        <Link href="/aula1" style={styles.link}>
-          Aula 1
-        </Link>
-      </View>
-      <View style={styles.retangulos}>
-        <Link href="/aula2" style={styles.link}>
-          Aula 2
-        </Link>
-      </View>
-      <View style={styles.retangulos}>
-        <Link href="/aula1408" style={styles.link}>
-          Aula 3
-        </Link>
-      </View>
-      <View style={styles.retangulos}>
-        <Link href="/aula2108pt1" style={styles.link}>
-          Aula 4
-        </Link>
-      </View>
-      <View style={styles.retangulos}>
-        <Link href="/aula2808" style={styles.link}>
-          Aula 5 parte 1
-        </Link>
-      </View>
-      <View style={styles.retangulos}>
-        <Link href="/aula2808ex2" style={styles.link}>
-          Aula 5 parte 2
-        </Link>
-      </View>
-      <View style={styles.retangulos}>
-        <Link href="/avaliacao0409" style={styles.link}>
-          Aula 6
-        </Link>
-      </View>
-      <View style={styles.retangulos}>
-        <Link href="/aula1809" style={styles.link}>
-          Aula 7   
-        </Link>
-      </View>
-      <View style={styles.imagens}>
-        <View style={styles.gatos}>
+        <Stack.Screen options={{ title: "Aulas" }} />
+        <View style={styles.retangulos}>
+          <Link href="/aula1" style={styles.link}>
+            Aula 1
+          </Link>
+        </View>
+        <View style={styles.retangulos}>
+          <Link href="/aula2" style={styles.link}>
+            Aula 2
+          </Link>
+        </View>
+        <View style={styles.retangulos}>
+          <Link href="/aula1408" style={styles.link}>
+            Aula 3
+          </Link>
+        </View>
+        <View style={styles.retangulos}>
+          <Link href="/aula2108pt1" style={styles.link}>
+            Aula 4
+          </Link>
+        </View>
+        <View style={styles.retangulos}>
+          <Link href="/aula2808" style={styles.link}>
+            Aula 5 parte 1
+          </Link>
+        </View>
+        <View style={styles.retangulos}>
+          <Link href="/aula2808ex2" style={styles.link}>
+            Aula 5 parte 2
+          </Link>
+        </View>
+        <View style={styles.retangulos}>
+          <Link href="/avaliacao0409" style={styles.link}>
+            Aula 6
+          </Link>
+        </View>
+        <View style={styles.retangulos}>
+          <Link href="/aula1809" style={styles.link}>
+            Aula 7
+          </Link>
+        </View>
+        <View style={styles.retangulos}>
+          <Link href="/lista" style={styles.link}>
+            Aula 8
+          </Link>
+        </View>
+        <View style={styles.imagens}>
+          <View style={styles.gatos}>
+            <Image
+              source={require("../../assets/oreo e frisk.jpg")}
+              style={styles.imagem}
+            />
+          </View>
           <Image
-            source={require("../../assets/oreo e frisk.jpg")}
+            source={require("../../assets/bell e crystal.jpg")}
             style={styles.imagem}
           />
         </View>
-        <Image
-          source={require("../../assets/bell e crystal.jpg")}
-          style={styles.imagem}
-        />
-      </View>
-      <StatusBar style="auto" />
+        <StatusBar style="auto" />
       </ScrollView>
     </SafeAreaView>
   );
