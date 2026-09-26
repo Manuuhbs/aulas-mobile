@@ -16,6 +16,7 @@ export default function Lista() {
   const [lista, setLista] = useState([]);
   const [texto, setTexto] = useState("");
 
+  
   function adicionaNaLista() {
     setLista([...lista, texto]);
     setTexto("");

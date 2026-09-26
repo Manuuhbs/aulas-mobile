@@ -58,6 +58,13 @@ export default function Inicio() {
           <Link href="/lista" style={styles.link}>
             Aula 8
           </Link>
+          
+        </View>
+        <View style={styles.retangulos}>
+          <Link href="/lista-db" style={styles.link}>
+            Aula 9
+          </Link>
+          
         </View>
         <View style={styles.imagens}>
           <View style={styles.gatos}>
