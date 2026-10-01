@@ -19,38 +19,37 @@ export default function Lista() {
   const [texto, setTexto] = useState("");
   const [cor, setCor] = useState("");
 
-  const db=SQLite.openDatabaseSync("bordel.db");
+  const db = SQLite.openDatabaseSync("bordel.db");
   db.execSync(`CREATE TABLE IF NOT EXISTS tarefas (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     texto VARCHAR(255) NOT NULL,
     cor VARCHAR(255)
   );
   `);
-  function carregar(){
+  function carregar() {
     setLista(listar());
   }
   function adicionar(texto) {
-  
-  db.runSync("INSERT INTO tarefas (texto, cor) VALUES (? , ?)", [texto, cor]);
-}
-function excluir(id) {
-  db.runSync("DELETE FROM tarefas WHERE id = ?", [id]);
-}
-function salvar(){
-  adicionar(texto, cor)
-  setTexto("")
-  setCor("")
-  carregar();
-}
+    db.runSync("INSERT INTO tarefas (texto, cor) VALUES (? , ?)", [texto, cor]);
+  }
+  function excluir(id) {
+    db.runSync("DELETE FROM tarefas WHERE id = ?", [id]);
+  }
+  function salvar() {
+    adicionar(texto, cor);
+    setTexto("");
+    setCor("");
+    carregar();
+  }
   useEffect(() => {
     carregar();
   }, []);
 
   function listar() {
-  return db.getAllSync("SELECT * FROM tarefas ORDER BY id DESC");
-}
+    return db.getAllSync("SELECT * FROM tarefas ORDER BY id DESC");
+  }
 
- function remover(id) {
+  function remover(id) {
     excluir(id);
     carregar();
   }
@@ -63,22 +62,22 @@ function salvar(){
           onChangeText={setTexto}
           placeholder="Digite o texto"
         />
-        <Input
-          value={cor}
-          onChangeText={setCor}
-          placeholder="Digite a cor"
-        />
+        <Input value={cor} onChangeText={setCor} placeholder="Digite a cor" />
+
         <Button title="adicionar" color="#020101" onPress={salvar} />
         <FlatList
           style={styles.lista}
           data={lista}
           renderItem={({ item }) => (
-             <View style={styles.item}>
-          <Text style={styles.item}>{item.texto} - {item.cor}</Text>
-           <Button title="Excluir" onPress={() => remover(item.id)} />
-        </View>
+            <View style={styles.item}>
+              <Text style={styles.item}>
+                {item.texto} - {item.cor}
+              </Text>
+              <Button title="Excluir" onPress={() => remover(item.id)} />
+            </View>
           )}
-          />
+        />
+      </View>
       <StatusBar style="auto" />
     </SafeAreaView>
   );
