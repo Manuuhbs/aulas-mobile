@@ -29,7 +29,7 @@ export default function Lista() {
   function carregar() {
     setLista(listar());
   }
-  function adicionar(texto) {
+  function adicionar(nome, cor) {
     db.runSync("INSERT INTO tarefas (texto, cor) VALUES (? , ?)", [texto, cor]);
   }
   function excluir(id) {
