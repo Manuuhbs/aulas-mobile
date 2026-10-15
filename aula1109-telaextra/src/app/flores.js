@@ -19,7 +19,7 @@ export default function Lista() {
   const [nome, setNome] = useState("");
   const [corPredominante, setCorPredominante] = useState("");
   const [nomeCientifico, setNomeCientifico] = useState("");
-  const [idEdita, setIdEdita] = useState(0)
+  const [idEdita, setIdEdita] = useState(0);
 
   const db = SQLite.openDatabaseSync("flores.db");
   db.execSync(`CREATE TABLE IF NOT EXISTS flores (
@@ -32,11 +32,17 @@ export default function Lista() {
   function carregar() {
     setLista(listar());
   }
-  function editar(nome, corPredominante, nomeCientifico, id){
-    db.runSync("UPDATE flores SET nome = ?, corPredominante = ?, nomeCientifico = ? WHERE id = ?", [nome, corPredominante, nomeCientifico, id])
+  function editar(nome, corPredominante, nomeCientifico, id) {
+    db.runSync(
+      "UPDATE flores SET nome = ?, corPredominante = ?, nomeCientifico = ? WHERE id = ?",
+      [nome, corPredominante, nomeCientifico, id],
+    );
   }
   function adicionar(nome, corPredominante, nomeCientifico) {
-    db.runSync("INSERT INTO flores (nome, corPredominante, nomeCientifico) VALUES (? , ?, ?)", [nome, corPredominante, nomeCientifico]);
+    db.runSync(
+      "INSERT INTO flores (nome, corPredominante, nomeCientifico) VALUES (? , ?, ?)",
+      [nome, corPredominante, nomeCientifico],
+    );
   }
   function excluir(id) {
     db.runSync("DELETE FROM flores WHERE id = ?", [id]);
@@ -44,22 +50,21 @@ export default function Lista() {
   function salvarOuEditar() {
     if (idEdita == 0) {
       adicionar(nome, corPredominante, nomeCientifico);
-    } else{
+    } else {
       editar(nome, corPredominante, nomeCientifico, idEdita);
-      }
+    }
     setNome("");
     setCorPredominante("");
     setNomeCientifico("");
     setIdEdita(0);
     carregar();
-
   }
-  function edita(flores){
+  function edita(flores) {
     setIdEdita(flores.id);
     setNome(flores.nome);
     setCorPredominante(flores.corPredominante);
     setNomeCientifico(flores.nomeCientifico);
-  }  
+  }
   useEffect(() => {
     carregar();
   }, []);
@@ -81,8 +86,16 @@ export default function Lista() {
           onChangeText={setNome}
           placeholder="Digite o nome"
         />
-        <Input value={corPredominante} onChangeText={setCorPredominante} placeholder="Digite a cor predominante" />
-        <Input value={nomeCientifico} onChangeText={setNomeCientifico} placeholder="Digite o nome cientifico" />
+        <Input
+          value={corPredominante}
+          onChangeText={setCorPredominante}
+          placeholder="Digite a cor predominante"
+        />
+        <Input
+          value={nomeCientifico}
+          onChangeText={setNomeCientifico}
+          placeholder="Digite o nome cientifico"
+        />
 
         <Button title="Salvar" color="#020101" onPress={salvarOuEditar} />
         <FlatList
@@ -95,7 +108,6 @@ export default function Lista() {
               </Text>
               <Button title="Excluir" onPress={() => remover(item.id)} />
               <Button title="Editar" onPress={() => edita(item)} />
-
             </View>
           )}
         />

@@ -35,6 +35,11 @@ export default function Lista() {
   function excluir(id) {
     db.runSync("DELETE FROM tarefas WHERE id = ?", [id]);
   }
+  
+  function listar() {
+    return db.getAllSync("SELECT * FROM tarefas ORDER BY id DESC");
+  }
+
   function salvar() {
     adicionar(texto, cor);
     setTexto("");
@@ -44,10 +49,6 @@ export default function Lista() {
   useEffect(() => {
     carregar();
   }, []);
-
-  function listar() {
-    return db.getAllSync("SELECT * FROM tarefas ORDER BY id DESC");
-  }
 
   function remover(id) {
     excluir(id);
