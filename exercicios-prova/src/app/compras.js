@@ -73,7 +73,6 @@ export default function ListaCompras() {
     setIdEdita(compras.id);
     setItemLista(compras.item_lista);
     setQuantidade(String(compras.quantidade));
-    //setIsComprado(compras.isComprado);
   }
   function compradoOuNao(comprado, id) {
     let novoValor;

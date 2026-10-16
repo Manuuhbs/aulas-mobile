@@ -31,8 +31,8 @@ export default function Inicio() {
         </Link>
       </View>
       <View style={styles.retangulos}>
-        <Link href="/agenda" style={styles.link}>
-          Agenda de contatos
+        <Link href="/filmes" style={styles.link}>
+          Lista de filmes
         </Link>
       </View>
       <StatusBar style="auto" />
