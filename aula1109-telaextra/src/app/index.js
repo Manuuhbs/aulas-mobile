@@ -70,6 +70,11 @@ export default function Inicio() {
             Aula 10
           </Link>          
         </View>
+         <View style={styles.retangulos}>
+          <Link href="/apis" style={styles.link}>
+            Aula 13
+          </Link>          
+        </View>
         <View style={styles.imagens}>
           <View style={styles.gatos}>
             <Image
