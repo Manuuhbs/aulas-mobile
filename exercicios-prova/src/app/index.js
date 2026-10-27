@@ -14,7 +14,7 @@ import { Link, Stack } from "expo-router";
 export default function Inicio() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>selecione a atividade</Text>
+      <Text>Selecione a atividade</Text>
       <View style={styles.retangulos}>
         <Link href="/agenda" style={styles.link}>
           Agenda de contatos

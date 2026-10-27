@@ -1,41 +1,44 @@
-import { useState } from "react";
-import { Button, StyleSheet, Text, TextInput } from "react-native";
+import { useState, useEffect } from "react";
+import { Button, Image, StyleSheet, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Stack } from "expo-router";
 
-export default function Cep() {
-  const [cep, setCep] = useState("");
-  // Começa vazio: endereco.bairro é undefined e o texto não aparece.
-  const [endereco, setEndereco] = useState({});
+export default function Cachorro() {
+  const [imagem, setImagem] = useState("");
   const [erro, setErro] = useState("");
 
-  // async: esta função vai esperar a internet (await).
   async function buscar() {
-    // 1. Pede para a API. Teste a mesma URL no navegador.
-    const resposta = await fetch(`https://dog.ceo/api/breeds/image/random`);
-    // 2. Transforma o texto da resposta em objeto.
-    const dados = await resposta.json();
+    try {
+      const resposta = await fetch("https://dog.ceo/api/breeds/image/random");
+
+      const dados = await resposta.json();
+
+      setImagem(dados.message);
+      setErro("");
+    } catch (e) {
+      setErro("Erro ao buscar cachorro.");
+    }
   }
+
+  useEffect(() => {
+    buscar();
+  }, []);
 
   return (
     <SafeAreaView style={styles.tela} edges={["bottom"]}>
-      <Stack.Screen options={{ title: "Buscar CEP" }} />
+      <Stack.Screen options={{ title: "Buscar Cachorros" }} />
 
-      <TextInput
-        style={styles.campo}
-        value={cep}
-        onChangeText={setCep}
-        placeholder="Digite o CEP, só números"
-        keyboardType="numeric"
-      />
-      <Button title="Buscar" onPress={buscar} />
+      {imagem !== "" && (
+        <Image
+          source={{ uri: imagem }}
+          style={{ width: "100%", height: 320 }}
+          resizeMode="contain"
+        />
+      )}
+
+      <Button title="Outro cachorro" onPress={buscar} />
 
       <Text style={styles.erro}>{erro}</Text>
-      <Text style={styles.titulo}>{endereco.logradouro}</Text>
-      <Text>{endereco.bairro}</Text>
-      <Text>
-        {endereco.localidade} {endereco.uf}
-      </Text>
     </SafeAreaView>
   );
 }
@@ -45,25 +48,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFFFFF",
     padding: 16,
-    gap: 6,
-  },
-
-  campo: {
-    borderWidth: 1,
-    borderColor: "#D9DDE3",
-    borderRadius: 12,
-    padding: 12,
-    fontSize: 16,
-    marginBottom: 6,
+    gap: 12,
   },
 
   erro: {
-    marginTop: 16,
+    marginTop: 10,
     color: "#B91C1C",
-  },
-
-  titulo: {
-    fontSize: 16,
-    fontWeight: "600",
   },
 });

@@ -21,16 +21,16 @@ export default function Inicio() {
         </View>
         <View style={styles.retangulos}>
           <Link href="/cachorro" style={styles.link}>
-           cachorro
+            cachorro
           </Link>
         </View>
         <View style={styles.retangulos}>
-          <Link href="/cachorro" style={styles.link}>
-           cnpj
+          <Link href="/cnpj" style={styles.link}>
+            cnpj
           </Link>
         </View>
         <View style={styles.retangulos}>
-          <Link href="/aula1408" style={styles.link}>
+          <Link href="/pokemon" style={styles.link}>
             pokemon
           </Link>
         </View>
