@@ -5,9 +5,7 @@ import { Stack } from "expo-router";
 
 export default function Cnpj() {
   const [cnpj, setCnpj] = useState("");
-  // Começa vazio: endereco.bairro é undefined e o texto não aparece.
   const [guardaDados, setGuardaDados] = useState({});
-  const [erro, setErro] = useState("");
   async function buscar() {
     try {
       const resposta = await fetch(
@@ -21,8 +19,8 @@ export default function Cnpj() {
         setErro("");
         setGuardaDados(dados);
       }
-    } catch (error) {
-      console.log("Erro na busca:", error);
+    } catch (erro) {
+      console.log("Erro na busca:", erro);
       setErro("Não foi possível consultar o CNPJ.");
       setGuardaDados({});
     }
@@ -37,7 +35,6 @@ export default function Cnpj() {
         value={cnpj}
         onChangeText={setCnpj}
         placeholder="Digite o Cnpj, só números"
-        keyboardType="numeric"
       />
       <Button title="Buscar" onPress={buscar} />
 

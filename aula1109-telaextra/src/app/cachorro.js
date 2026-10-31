@@ -5,7 +5,6 @@ import { Stack } from "expo-router";
 
 export default function Cachorro() {
   const [imagem, setImagem] = useState("");
-  const [erro, setErro] = useState("");
 
   async function buscar() {
     try {
@@ -15,7 +14,7 @@ export default function Cachorro() {
 
       setImagem(dados.message);
       setErro("");
-    } catch (e) {
+    } catch (erro) {
       setErro("Erro ao buscar cachorro.");
     }
   }
@@ -28,7 +27,7 @@ export default function Cachorro() {
     <SafeAreaView style={styles.tela} edges={["bottom"]}>
       <Stack.Screen options={{ title: "Buscar Cachorros" }} />
 
-      {imagem !== "" && (
+      {imagem && (
         <Image
           source={{ uri: imagem }}
           style={{ width: "100%", height: 320 }}
