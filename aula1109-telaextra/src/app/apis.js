@@ -34,6 +34,11 @@ export default function Inicio() {
             pokemon
           </Link>
         </View>
+        <View style={styles.retangulos}>
+          <Link href="/produto" style={styles.link}>
+            produto
+          </Link>
+        </View>
         <StatusBar style="auto" />
       </ScrollView>
     </SafeAreaView>
