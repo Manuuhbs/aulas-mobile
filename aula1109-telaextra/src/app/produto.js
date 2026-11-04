@@ -10,7 +10,6 @@ export default function Cnpj() {
   const [quantidade, setQuantidade] = useState("");
   const [descricao, setDescricao] = useState("");
   const [guardaDados, setGuardaDados] = useState({});
-  const [erro, setErro] = useState("");
   // cria um objeto chamado API, que irá guardar o link da API, para facilitar na requisição
   const API = "https://6aeb6b94ee39618d7bf84d81.mockapi.io/Produto";
   //função buscar, onde puxa deste objeto e guarda tudo na variavel guardaDados
@@ -33,9 +32,6 @@ export default function Cnpj() {
         descricao: descricao.trim(),
       }),
     });
-    if () {
-      
-    }
     //limpa os campos e busca de novo os produtos novos
     setNome("");
     setTipo("");
